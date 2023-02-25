@@ -13,6 +13,7 @@ export const StateContextProvider = ({ children }) => {
   const address = useAddress();
   const connect = useMetamask();
   const disconnect = useDisconnect();
+  var search_campaigns;
 
   const publishCampaign = async (form) => {
     try {
@@ -45,6 +46,7 @@ export const StateContextProvider = ({ children }) => {
       pId: i
     }));
 
+    search_campaigns = parsedCampaings
     return parsedCampaings;
   }
 
@@ -78,6 +80,11 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   }
 
+  const searchCampaigns = async (search_keyword) => {
+    const search_result = search_campaigns.filter((campaigns) => campaigns.title == search_keyword);
+    return search_result;
+  }
+
 
   return (
     <StateContext.Provider
@@ -90,7 +97,8 @@ export const StateContextProvider = ({ children }) => {
         getUserCampaigns,
         donate,
         getDonations,
-        disconnect
+        disconnect,
+        searchCampaigns
       }}
     >
       {children}
