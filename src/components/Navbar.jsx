@@ -14,7 +14,7 @@ const Navbar = () => {
   const [keyword, setKeyword] = useState('');
   const { connect, address, searchCampaigns } = useStateContext();
 
-  const search = async () => {
+  const search_campaigns = async () => {
     const data = await searchCampaigns(keyword);
     setCampaigns(data);
   }
@@ -25,7 +25,7 @@ const Navbar = () => {
         <input name='search_keyword' type="text" placeholder="Search for campaigns" onChange={(e) => setKeyword(e.target.value)} className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-[#4b5264] text-white bg-transparent outline-none" />
         
         <div className="w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer">
-          <img src={search} alt="search" className="w-[15px] h-[15px] object-contain" onClick={search}/>
+          <img src={search} alt="search" className="w-[15px] h-[15px] object-contain" onClick={search_campaigns}/>
         </div>
       </div>
 
